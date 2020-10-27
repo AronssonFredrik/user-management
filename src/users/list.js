@@ -5,13 +5,20 @@ export default class UserList extends React.Component {
     constructor() {
         super();
     }
+    handleSort = (key) => {
+        const ascending = key === this.props.sortOptions.key 
+            ? !this.props.sortOptions.ascending
+            : true;
+        console.log(ascending);
+        this.props.sortUsers(key, ascending);
+    }
     render() {
         return (
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
+                        <th onClick={() => this.handleSort('id')}>Id</th>
+                        <th onClick={() => this.handleSort('username')}>Name</th>
                         <th>City</th>
                     </tr>
                 </thead>
