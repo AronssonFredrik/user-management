@@ -1,5 +1,7 @@
 import Axios from 'axios';
 import React from 'react';
+import { Container, Jumbotron } from 'react-bootstrap';
+import UserList from './list';
 
 export default class Users extends React.Component {
     constructor() {
@@ -19,6 +21,16 @@ export default class Users extends React.Component {
             });
     }
     render() {
-        return (<></>)
+        return (
+            <>
+                <Jumbotron bg="dark" variant="dark">
+                    <Container>
+                        <h1 className="display-4">Users</h1>
+                        <p className="lead">Available users</p>
+                    </Container>
+                </Jumbotron>
+                <UserList users={this.state.users}></UserList>
+            </>
+        )
     }
 }
