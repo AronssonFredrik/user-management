@@ -29,7 +29,6 @@ export default class Users extends React.Component {
     }
 
     sortUsers = (key, ascending) => {
-        console.log(`set ascending to: ${ascending}`);
         this.setState(prevState => ({
             users: sortByProp(prevState.users, key, ascending),
             sortOptions: {

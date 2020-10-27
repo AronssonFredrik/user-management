@@ -9,7 +9,6 @@ export default class UserList extends React.Component {
         const ascending = key === this.props.sortOptions.key 
             ? !this.props.sortOptions.ascending
             : true;
-        console.log(ascending);
         this.props.sortUsers(key, ascending);
     }
     render() {
