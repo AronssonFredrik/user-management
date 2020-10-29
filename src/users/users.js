@@ -35,6 +35,15 @@ export default class Users extends React.Component {
             });
     }
 
+    removeUser = (user) => {
+        Axios.delete(`http://jsonplaceholder.typicode.com/users/${user.id}`)
+            .then(res => {
+                this.setState(prevState => ({
+                    users: prevState.users.filter(prevUser => prevUser.id !== user.id)
+                }))
+            });
+    }
+
     sortUsers = (key, ascending) => {
         this.setState(prevState => ({
             users: sortByProp(prevState.users, key, ascending),
@@ -70,7 +79,7 @@ export default class Users extends React.Component {
                 { this.state.create &&
                     <UserCreate handleCreate={this.createUser} />
                 }
-                <UserList {...this.state} sortUsers={this.sortUsers}></UserList>
+                <UserList {...this.state} sortUsers={this.sortUsers} removeUser={this.removeUser}></UserList>
             </>
         )
     }
