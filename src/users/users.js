@@ -5,6 +5,8 @@ import UserList from './list';
 import UserCreate from './create';
 import sortByProp from '../utils/sortByProp';
 
+import Api from '../service/api';
+
 export default class Users extends React.Component {
     constructor(props) {
         super(props);
@@ -19,29 +21,32 @@ export default class Users extends React.Component {
         }
     }
     componentDidMount() {
-        Axios.get('http://jsonplaceholder.typicode.com/users')
-            .then(res => {
+        Api.get('users').then(
+            (res) => {
                 this.setState({ users: res.data });
-            });
+            }
+        );
     }
 
     createUser = (newUser) => {
-        Axios.post('http://jsonplaceholder.typicode.com/users', newUser)
-            .then(res => {
+        Api.post('users', newUser).then(
+            (res) => {
                 this.setState(prevState => ({
                     users: [res.data, ...prevState.users]
                 }));
                 this.openCreateWindow(false);
-            });
+            }
+        );
     }
 
     removeUser = (user) => {
-        Axios.delete(`http://jsonplaceholder.typicode.com/users/${user.id}`)
-            .then(res => {
+        Api.delete(`users/${user.id}`).then(
+            (res) => {
                 this.setState(prevState => ({
                     users: prevState.users.filter(prevUser => prevUser.id !== user.id)
-                }))
-            });
+                }));
+            }
+        );
     }
 
     sortUsers = (key, ascending) => {
