@@ -1,11 +1,10 @@
-import Axios from 'axios';
 import React from 'react';
 import { Button, Container, Jumbotron } from 'react-bootstrap';
 import UserList from './list';
 import UserCreate from './create';
-import sortByProp from '../utils/sortByProp';
+import sortByProp from '../../utils/sortByProp';
 
-import Api from '../service/api';
+import Api from '../../service/api';
 
 export default class Users extends React.Component {
     constructor(props) {

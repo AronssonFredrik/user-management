@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Container, Navbar, Nav } from 'react-bootstrap';
-import Users from './users/users'
+import Users from './users/users';
 export default class App extends React.Component {
   render() {
     return (
