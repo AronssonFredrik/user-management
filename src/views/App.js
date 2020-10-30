@@ -1,20 +1,31 @@
 
 import React from 'react';
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import { Container, Navbar } from 'react-bootstrap';
 import Users from './users/users';
+
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 export default class App extends React.Component {
   render() {
     return (
-      <>
+      <BrowserRouter>
         <Navbar bg="dark" variant="dark">
           <Navbar.Brand>Fredev.UM</Navbar.Brand>
-          <Nav.Link href="#users">Users</Nav.Link>
+          <Link to="/users">
+            Users
+          </Link>
         </Navbar>
-
         <Container fluid="md">
-          <Users />
+          <Switch>
+            <Route path="/" component={Users} />
+          </Switch>
         </Container>
-      </>
+      </BrowserRouter>
     );
   }
 }
